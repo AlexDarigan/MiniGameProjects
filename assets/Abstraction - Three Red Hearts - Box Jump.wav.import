@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jie25xgaxwln"
+path="res://.godot/imported/Abstraction - Three Red Hearts - Box Jump.wav-faca4d1aad76856b9614663de2b884dc.sample"
+
+[deps]
+
+source_file="res://assets/Abstraction - Three Red Hearts - Box Jump.wav"
+dest_files=["res://.godot/imported/Abstraction - Three Red Hearts - Box Jump.wav-faca4d1aad76856b9614663de2b884dc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

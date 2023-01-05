@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://bog4c6622a7mr"]
+
+[ext_resource type="Script" path="res://pong/pong.gd" id="1_2qfso"]
+[ext_resource type="Texture2D" uid="uid://b5cy2fkfcxypu" path="res://assets/rect.png" id="1_ohqyd"]
+[ext_resource type="AudioStream" uid="uid://gj6du50jboqq" path="res://assets/impactPunch_heavy_003.ogg" id="2_34i4d"]
+[ext_resource type="AudioStream" uid="uid://c1mxvisgrsfxj" path="res://assets/zap2.ogg" id="2_kfimr"]
+[ext_resource type="Script" path="res://pong/ball.gd" id="3_8atbq"]
+[ext_resource type="Texture2D" uid="uid://bhytiyhml26ve" path="res://assets/ball.png" id="4_k3m4j"]
+[ext_resource type="PackedScene" uid="uid://bdxqyyum7m0rr" path="res://pong/paddle.tscn" id="5_w425b"]
+[ext_resource type="AudioStream" uid="uid://jie25xgaxwln" path="res://assets/Abstraction - Three Red Hearts - Box Jump.wav" id="6_jft0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6qre"]
+size = Vector2(1280, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qf774"]
+radius = 32.1403
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1as00"]
+size = Vector2(2, 720)
+
+[node name="Pong" type="Node"]
+script = ExtResource("1_2qfso")
+goal = ExtResource("2_kfimr")
+bounce = ExtResource("2_34i4d")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ohqyd")
+
+[node name="LeftPaddle" parent="." instance=ExtResource("5_w425b")]
+
+[node name="RightPaddle" parent="." instance=ExtResource("5_w425b")]
+position = Vector2(1260, 360)
+player = 1
+
+[node name="Ceiling" type="StaticBody2D" parent="." groups=["Boundary"]]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(640, -5)
+shape = SubResource("RectangleShape2D_u6qre")
+
+[node name="Floor" type="StaticBody2D" parent="." groups=["Boundary"]]
+position = Vector2(0, 730)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(640, -5)
+shape = SubResource("RectangleShape2D_u6qre")
+
+[node name="Split" type="Sprite2D" parent="."]
+position = Vector2(640, 359)
+scale = Vector2(0.01, 1.12)
+texture = ExtResource("1_ohqyd")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(641, 351)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("3_8atbq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("4_k3m4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_qf774")
+
+[node name="LeftGoal" type="Area2D" parent="." groups=["Goal"]]
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal"]
+position = Vector2(-1, 360)
+shape = SubResource("RectangleShape2D_1as00")
+
+[node name="RightGoal" type="Area2D" parent="." groups=["Goal"]]
+position = Vector2(1282, 0)
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal"]
+position = Vector2(-1, 360)
+shape = SubResource("RectangleShape2D_1as00")
+
+[node name="LeftScore" type="Label" parent="."]
+offset_left = 587.0
+offset_right = 627.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="RightScore" type="Label" parent="."]
+offset_left = 656.0
+offset_top = 1.0
+offset_right = 696.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jft0y")
+autoplay = true
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0

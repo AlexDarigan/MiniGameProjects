@@ -1,3 +1,14 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1672920387
+::res://::1672921639
 icon.svg::CompressedTexture2D::5207773889739225508::1672920366::1672920391::1::::<><>::
+::res://assets/::1672927161
+Abstraction - Three Red Hearts - Box Jump.wav::AudioStreamWAV::648507310685815955::1414858798::1672925942::1::::<><>::
+ball.png::CompressedTexture2D::2928456836405621266::1672922140::1672922142::1::::<><>::
+impactPunch_heavy_003.ogg::AudioStreamOggVorbis::441601143731311392::1637232377::1672926737::1::::<><>::
+rect.png::CompressedTexture2D::4497720450899596394::1672920689::1672920720::1::::<><>::
+zap2.ogg::AudioStreamOggVorbis::6623958275818717835::1637232412::1672927225::1::::<><>::
+::res://pong/::1672927210
+paddle.gd::GDScript::-1::1672925566::0::1::::<>CharacterBody2D<>::
+pong.tscn::PackedScene::3383216802903616633::1672927210::0::1::::<><>::res://pong/pong.gd<>uid://b5cy2fkfcxypu<>res://pong/paddle.gd<>uid://gj6du50jboqq<>uid://c1mxvisgrsfxj<>res://pong/ball.gd<>uid://bhytiyhml26ve<>uid://jie25xgaxwln
+ball.gd::GDScript::-1::1672926709::0::1::::<>CharacterBody2D<>::
+pong.gd::GDScript::-1::1672927210::0::1::::<>Node<>::
